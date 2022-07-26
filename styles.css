@@ -16,8 +16,6 @@ h1 {
     margin: 0 15% 0 15%;
 }
 
-.grid-item {}
-
 .grid-item-1 {
     height: 150px;
     grid-column-start: 1;
@@ -43,9 +41,6 @@ h1 {
     width: 500px;
     justify-self: center;
 }
-
-
-/* CSS */
 
 .button-28,
 #color-picker {

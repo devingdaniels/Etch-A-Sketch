@@ -1,12 +1,30 @@
-// Parent for the etch a sketch grid container
+const DEFAULT_COLOR = '#000000'
+const DEFAULT_MODE = 'color'
+const DEFAULT_SIZE = 16
+
+let currentColor = DEFAULT_COLOR
+let currentMode = DEFAULT_MODE
+let currentSize = DEFAULT_SIZE
+
+
+
 const gridParent = document.querySelector("#parent-for-grid");
 const clearSketch = document.getElementById("clear-sketch-pad");
-const currentColor = document.getElementsByClassName('color-picker')
-    // This is starting grid container that is located within the parent-grid
+const colorPicker = document.getElementById('color-picker')
+const eraser = document.getElementById('eraser')
 
 
 
-// var userColor = currentColor.type.value;
+
+
+function setCurrentColor(color) {
+    currentColor = color;
+}
+
+colorPicker.oninput = (e) => setCurrentColor(e.target.value);
+eraser.onclick = (e) => setCurrentColor("#FFFFFF")
+
+
 var gridContainer;
 var colSize = 32;
 
@@ -40,7 +58,6 @@ function createGridContainer() {
     newContainer.style.margin = "0";
     newContainer.style.padding = "0"
     newContainer.style.display = "grid";
-    newContainer.style.backgroundColor = "aqua";
     newContainer.style.border = "2px solid black";
     newContainer.style.setProperty('grid-template-columns', 'repeat(' + colSize + ', 1fr)');
     gridContainer = newContainer;
@@ -65,21 +82,20 @@ function addDivs() {
         newDiv.style.margin = 0;
         newDiv.style.padding = 0;
         newDiv.addEventListener('mouseover', changeColor)
+        newDiv.addEventListener('mousedown', changeColor)
         gridContainer.appendChild(newDiv);
     }
     gridParent.append(gridContainer);
 }
 
 
+
 function changeColor(e) {
-    e.target.style.backgroundColor = "black";
+    if (e.type === 'mouseover' && !mouseDown) return
+
+    e.target.style.backgroundColor = currentColor;
 }
 
 function reloadGrid() {
-    console.log('reload grid pressed')
-    clearGrid()
-}
-
-function clearGrid() {
     createSketchPad();
 }
