@@ -37,7 +37,8 @@ function createGridContainer() {
     var newContainer = document.createElement('div');
     newContainer.style.width = "500px";
     newContainer.style.height = "500px";
-    newContainer.style.margin = "50px auto 0 auto";
+    newContainer.style.margin = "0";
+    newContainer.style.padding = "0"
     newContainer.style.display = "grid";
     newContainer.style.backgroundColor = "aqua";
     newContainer.style.border = "2px solid black";

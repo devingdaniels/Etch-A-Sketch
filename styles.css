@@ -5,39 +5,50 @@ body {
     box-sizing: border-box;
 }
 
+h1 {
+    font-size: 90px;
+    text-align: center;
+}
+
 .main-grid-container {
-    margin: 0 10% 0 10%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(2, 1fr));
-    padding: 0;
-    margin-bottom: 100px;
+    grid-template-columns: repeat(3, auto);
+    margin: 0 15% 0 15%;
 }
 
-header {
-    font-size: 55px;
-    text-align: center;
-    font-family: fantasy;
-    padding: 15px 0 0 0;
+.grid-item {}
+
+.grid-item-1 {
+    height: 150px;
     grid-column-start: 1;
-    grid-column-end: 3;
-    /* or use grid-column-grid: -1; */
+    grid-column-end: 4;
 }
 
-.slide-container {
-    padding-top: 30px;
+.grid-item-2 {
+    grid-row-start: 2;
+    grid-row-end: 4;
+    max-width: 250px;
+    min-width: 25px;
+    height: 400px;
+    align-self: center;
     text-align: center;
 }
 
-.display-size {
-    font-size: 25px;
+.grid-item-3 {
+    grid-row-start: 2;
+    grid-row-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    height: 500px;
+    width: 500px;
+    justify-self: center;
 }
 
 
 /* CSS */
 
 .button-28,
-.slider-container,
-.color-picker {
+#color-picker {
     appearance: none;
     background-color: transparent;
     border: 2px solid #1A1A1A;
