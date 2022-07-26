@@ -1,8 +1,16 @@
 // Parent for the etch a sketch grid container
-var gridParent = document.querySelector("#grid-parent");
-// This is starting grid container that is located within the parent-grid
+const gridParent = document.querySelector("#parent-for-grid");
+const clearSketch = document.getElementById("clear-sketch-pad");
+const currentColor = document.getElementsByClassName('color-picker')
+    // This is starting grid container that is located within the parent-grid
+
+
+
+// var userColor = currentColor.type.value;
 var gridContainer;
-var colSize = 16;
+var colSize = 32;
+
+clearSketch.onclick = () => reloadGrid();
 
 // this gets the value from the slider 
 var slider = document.getElementById("myRange");
@@ -19,6 +27,7 @@ slider.oninput = function() {
 
 window.onload = function() {
     gridContainer = document.createElement('div');
+    displayCurrentSize.textContent = colSize + " x " + colSize;
     createGridContainer();
     addDivs();
 };
@@ -31,6 +40,7 @@ function createGridContainer() {
     newContainer.style.margin = "50px auto 0 auto";
     newContainer.style.display = "grid";
     newContainer.style.backgroundColor = "aqua";
+    newContainer.style.border = "2px solid black";
     newContainer.style.setProperty('grid-template-columns', 'repeat(' + colSize + ', 1fr)');
     gridContainer = newContainer;
 }
@@ -45,17 +55,30 @@ function createSketchPad() {
 }
 
 function addDivs() {
-
     for (var i = 0; i < colSize * colSize; i++) {
         var newDiv = document.createElement('div');
         newDiv.className = "template-div";
         newDiv.style.height = "auto";
         newDiv.style.width = "auto";
-        newDiv.style.backgroundColor = "blue";
+        newDiv.style.backgroundColor = "white";
         newDiv.style.margin = 0;
         newDiv.style.padding = 0;
-        newDiv.style.border = ".1px solid red";
+        newDiv.addEventListener('mouseover', changeColor)
         gridContainer.appendChild(newDiv);
     }
     gridParent.append(gridContainer);
+}
+
+
+function changeColor(e) {
+    e.target.style.backgroundColor = "black";
+}
+
+function reloadGrid() {
+    console.log('reload grid pressed')
+    clearGrid()
+}
+
+function clearGrid() {
+    createSketchPad();
 }
