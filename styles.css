@@ -17,7 +17,6 @@ h1 {
 }
 
 .grid-item-1 {
-    height: 150px;
     grid-column-start: 1;
     grid-column-end: 4;
 }
@@ -25,9 +24,6 @@ h1 {
 .grid-item-2 {
     grid-row-start: 2;
     grid-row-end: 4;
-    max-width: 250px;
-    min-width: 25px;
-    height: 400px;
     align-self: center;
     text-align: center;
 }
@@ -37,8 +33,6 @@ h1 {
     grid-row-end: 4;
     grid-column-start: 2;
     grid-column-end: 3;
-    height: 500px;
-    width: 500px;
     justify-self: center;
 }
 
