@@ -9,20 +9,11 @@ let currentSize = DEFAULT_SIZE
 
 
 const gridParent = document.querySelector("#parent-for-grid");
-const clearSketch = document.getElementById("clear-sketch-pad");
+const reset = document.getElementById("reset-pad");
 const colorPicker = document.getElementById('color-picker')
 const eraser = document.getElementById('eraser')
-
-
-
-
-function setCurrentColor(color) {
-    currentColor = color;
-}
-
-colorPicker.oninput = (e) => setCurrentColor(e.target.value);
-eraser.onclick = (e) => setCurrentColor("#FFFFFF")
-
+const rangeSlider = document.getElementById("range-slider");
+const sketchDimensions = document.getElementById("display-grid-dimensions");
 
 
 let mouseDown = false
@@ -31,25 +22,23 @@ document.body.onmouseup = () => (mouseDown = false)
 
 
 
+colorPicker.oninput = (e) => setCurrentColor(e.target.value);
+eraser.onclick = (e) => setCurrentColor("#FFFFFF")
+reset.onclick = () => reloadGrid();
 
-clearSketch.onclick = () => reloadGrid();
+// this gets the value from the rangeSlider 
 
-// this gets the value from the slider 
-var slider = document.getElementById("myRange");
-// variable for where the out will be displayed 
-var displayCurrentSize = document.querySelector(".display-size");
-
-slider.oninput = function() {
-    currentSize = slider.value;
+rangeSlider.oninput = function() {
+    currentSize = rangeSlider.value;
     console.log(currentSize);
-    displayCurrentSize.textContent = currentSize + " x " + currentSize;
+    sketchDimensions.textContent = currentSize + " x " + currentSize;
     createSketchPad();
 }
 
 var gridContainer;
 window.onload = function() {
     gridContainer = document.createElement('div');
-    displayCurrentSize.textContent = currentSize + " x " + currentSize;
+    sketchDimensions.textContent = currentSize + " x " + currentSize;
     createGridContainer();
     addDivs();
 };
@@ -99,4 +88,10 @@ function changeColor(e) {
 
 function reloadGrid() {
     createSketchPad();
+}
+
+
+
+function setCurrentColor(color) {
+    currentColor = color;
 }

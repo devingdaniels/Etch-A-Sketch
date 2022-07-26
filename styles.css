@@ -10,25 +10,25 @@ h1 {
     text-align: center;
 }
 
-.main-grid-container {
+#main-grid-container {
     display: grid;
     grid-template-columns: repeat(3, auto);
     margin: 0 15% 0 15%;
 }
 
-.grid-item-1 {
+header {
     grid-column-start: 1;
     grid-column-end: 4;
 }
 
-.grid-item-2 {
+#control-panel {
     grid-row-start: 2;
     grid-row-end: 4;
     align-self: center;
     text-align: center;
 }
 
-.grid-item-3 {
+#parent-for-grid {
     grid-row-start: 2;
     grid-row-end: 4;
     grid-column-start: 2;
@@ -36,7 +36,7 @@ h1 {
     justify-self: center;
 }
 
-.button-28,
+.custom-button,
 #color-picker {
     appearance: none;
     background-color: transparent;
@@ -66,18 +66,18 @@ h1 {
     margin-bottom: 20px;
 }
 
-.button-28:disabled {
+.custom-button:disabled {
     pointer-events: none;
 }
 
-.button-28:hover {
+.custom-button:hover {
     color: #fff;
     background-color: #1A1A1A;
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
 }
 
-.button-28:active {
+.custom-button:active {
     box-shadow: none;
     transform: translateY(0);
 }
