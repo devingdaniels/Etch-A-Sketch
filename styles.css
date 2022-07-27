@@ -22,17 +22,22 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 #parent-for-grid {
     display: grid;
     height: 500px;
     width: 700px;
-    border: 3px inset black;
+    border: 3px outset rgb(10, 89, 250);
 }
 
 #control-panel {
     text-align: center;
+}
+
+.colorLabel {
+    display: inline-block;
 }
 
 .custom-button {
@@ -40,7 +45,7 @@ h1 {
     background-color: transparent;
     border: 2px solid #1A1A1A;
     border-radius: 15px;
-    color: #3B3B3B;
+    color: black;
     cursor: pointer;
     display: inline-block;
     font-size: 16px;
@@ -59,8 +64,7 @@ h1 {
 }
 
 .custom-button:hover {
-    color: #fff;
-    background-color: #1A1A1A;
+    background-color: rgb(10, 89, 250);
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
 }
@@ -76,6 +80,7 @@ h1 {
     color: var(--primary-light);
     font-size: 24px;
     transition: transform 0.3s ease-in-out;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .fa-github:hover {

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-
+    <link rel="icon" href="./images/android-chrome-512x512.png">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
     <script src="js.js" defer></script>
     <title>Etch-A-Sketch</title>
@@ -18,8 +18,10 @@
             <h1>Etch-a-Sketch</h1>
         </header>
         <div id="control-panel">
+            <p class="colorLabel">Color</p>
             <input id="color-picker" type='color' value="#000000">
-            <button id="color-toggle" class="custom-button" role="button">Color</button>
+            <button id="rainbow-toggle" class="custom-button" role="button">Rainbow</button>
+            <button id="color-toggle" class="custom-button" role="button">Pen</button>
             <button id="eraser" class="custom-button" role="button">Eraser</button>
             <button id="reset-pad" class="custom-button" role="button">Reset</button>
             <p id="display-grid-dimensions"></p>
@@ -29,7 +31,7 @@
     </div>
     <footer class="footer">
         <p>
-            Copyright ©
+            Copyright©
             <script>
                 document.write(new Date().getFullYear())
             </script>
