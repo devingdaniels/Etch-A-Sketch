@@ -1,5 +1,3 @@
 # Etch-A-Sketch
 
-Demo: 
-
-
+Demo: https://devingdaniels.github.io/Etch-A-Sketch/
