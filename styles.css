@@ -6,6 +6,10 @@ body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+html {
+    background-color: rgb(176, 226, 226);
+}
+
 h1 {
     font-size: 90px;
     text-align: center;
@@ -20,7 +24,7 @@ h1 {
 
 header {
     grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column-end: -1;
 }
 
 #control-panel {
@@ -82,4 +86,21 @@ header {
 .custom-button:active {
     box-shadow: none;
     transform: translateY(0);
+}
+
+.footer {
+    margin: 30px auto 0px auto;
+    color: var(--primary-light);
+    font-size: 20px;
+    text-align: center;
+}
+
+.fa-github {
+    color: var(--primary-light);
+    font-size: 24px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.fa-github:hover {
+    transform: rotate(360deg) scale(1.2);
 }

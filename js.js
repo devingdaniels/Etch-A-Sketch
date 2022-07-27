@@ -31,29 +31,12 @@ colorPicker.oninput = (e) => {
 colorButtonToggle.onclick = () => updateCurrentMode('color');
 eraserButtonToggle.onclick = () => updateCurrentMode('eraser');
 reset.onclick = () => reloadGrid();
-rangeSlider.oninput = () => updateDimensions();
+rangeSlider.onchange = () => updateDimensions();
 
 // variable for tracking when mouse is pressed down or not 
 let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
-
-function updateCurrentMode(updatedMode) {
-    // toggle off current mode
-    if (currentMode === 'color') {
-        colorButtonToggle.classList.remove = 'active';
-    } else if (currentColor === 'eraser') {
-        eraserButtonToggle.classList.remove = 'active';
-    }
-    // update current mode and make active
-    if (updatedMode === 'color') {
-        colorButtonToggle.classList.add = 'active';
-    } else if (updatedMode === 'eraser') {
-        eraserButtonToggle.classList.add = 'active';
-    }
-    currentMode = updatedMode;
-}
-
 
 function createSketchPad() {
 
@@ -79,13 +62,10 @@ function createSketchPad() {
 
 function populateSketchPad() {
     for (var i = 0; i < currentSize * currentSize; i++) {
-        var newDiv = document.createElement('div');
-        newDiv.className = "template-div";
-        newDiv.style.height = "auto";
-        newDiv.style.width = "auto";
-        newDiv.style.backgroundColor = "white";
-        newDiv.style.margin = 0;
-        newDiv.style.padding = 0;
+        const newDiv = document.createElement('div');
+        newDiv.classList = "template-div";
+        // userSelect was a two hour bug...
+        newDiv.style.userSelect = "none";
         newDiv.addEventListener('mouseover', changeColor)
         newDiv.addEventListener('mousedown', changeColor)
         sketchContainer.appendChild(newDiv);
@@ -112,15 +92,31 @@ function changeColor(e) {
     if (currentMode === 'color') {
         e.target.style.backgroundColor = currentColor;
     } else {
-        e.target.style.backgroundColor = '#ffffff';
+        e.target.style.backgroundColor = '#fefefe';
     }
 }
+
+function updateCurrentMode(updatedMode) {
+    // toggle off current mode
+    if (currentMode === 'color') {
+        colorButtonToggle.classList.remove = 'active';
+    } else if (currentColor === 'eraser') {
+        eraserButtonToggle.classList.remove = 'active';
+    }
+    // update current mode and make active
+    if (updatedMode === 'color') {
+        colorButtonToggle.classList.add = 'active';
+    } else if (updatedMode === 'eraser') {
+        eraserButtonToggle.classList.add = 'active';
+    }
+    currentMode = updatedMode;
+}
+
 
 function reloadGrid() {
     updateCurrentMode('color');
     createSketchPad();
 }
-
 
 
 window.onload = () => {
