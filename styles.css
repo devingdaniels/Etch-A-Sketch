@@ -6,70 +6,52 @@ body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-html {
-    background-color: rgb(176, 226, 226);
-}
-
 h1 {
     font-size: 90px;
     text-align: center;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
+}
+
+#color-picker {
+    width: 100px;
+    border: none;
+    background: transparent;
 }
 
 #main-grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    margin: 0 15% 0 15%;
-}
-
-header {
-    grid-column-start: 1;
-    grid-column-end: -1;
-}
-
-#control-panel {
-    grid-row-start: 2;
-    grid-row-end: 4;
-    align-self: center;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #parent-for-grid {
-    grid-row-start: 2;
-    grid-row-end: 4;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    justify-self: center;
+    display: grid;
+    height: 500px;
+    width: 700px;
+    border: 3px inset black;
 }
 
-.custom-button,
-#color-picker {
+#control-panel {
+    text-align: center;
+}
+
+.custom-button {
     appearance: none;
     background-color: transparent;
     border: 2px solid #1A1A1A;
     border-radius: 15px;
-    box-sizing: border-box;
     color: #3B3B3B;
     cursor: pointer;
     display: inline-block;
-    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 16px;
     font-weight: 600;
-    line-height: normal;
-    margin: 0;
     min-height: 60px;
     min-width: 0;
-    outline: none;
-    padding: 16px 24px;
+    padding: 12px 14px;
     text-align: center;
-    text-decoration: none;
     transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    width: 100%;
     will-change: transform;
-    margin-bottom: 20px;
+    margin: 0 10px 20px 10px;
 }
 
 .custom-button:disabled {
@@ -81,11 +63,6 @@ header {
     background-color: #1A1A1A;
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
-}
-
-.custom-button:active {
-    box-shadow: none;
-    transform: translateY(0);
 }
 
 .footer {
@@ -103,4 +80,21 @@ header {
 
 .fa-github:hover {
     transform: rotate(360deg) scale(1.2);
+}
+
+@media (max-width: 650px) {
+    h1 {
+        font-size: 60px;
+    }
+    #parent-for-grid {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 450px) {
+    #parent-for-grid {
+        width: 200px;
+        height: 200px;
+    }
 }

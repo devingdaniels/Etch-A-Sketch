@@ -5,7 +5,6 @@ const DEFAULT_SIZE = 32;
 let currentColor = DEFAULT_COLOR
 let currentMode = DEFAULT_MODE
 let currentSize = DEFAULT_SIZE
-var sketchContainer = null; // stores address for the current etch-a-sketch
 
 
 // gridParent is the container for the etch-a-sketch
@@ -31,7 +30,7 @@ colorPicker.oninput = (e) => {
 colorButtonToggle.onclick = () => updateCurrentMode('color');
 eraserButtonToggle.onclick = () => updateCurrentMode('eraser');
 reset.onclick = () => reloadGrid();
-rangeSlider.onchange = () => updateDimensions();
+rangeSlider.oninput = () => updateDimensions();
 
 // variable for tracking when mouse is pressed down or not 
 let mouseDown = false
@@ -40,41 +39,23 @@ document.body.onmouseup = () => (mouseDown = false)
 
 function createSketchPad() {
 
-    if (sketchContainer !== null) {
-        // remove the old div container
-        gridParent.removeChild(sketchContainer);
-    }
-    // // create a new grid div container with correct dimension
-    var newSketchPad = document.createElement('div');
-    newSketchPad.style.display = "grid";
-    newSketchPad.style.width = "500px";
-    newSketchPad.style.height = "500px";
-    newSketchPad.style.margin = "0";
-    newSketchPad.style.padding = "0px";
-    newSketchPad.style.border = "7px outset rgb(10, 90, 254)";
-    newSketchPad.style.setProperty('grid-template-columns', 'repeat(' + currentSize + ', 1fr) ');
-    // update the sketchContainer to be the newSketchPad
-    sketchContainer = newSketchPad
-        // populate the new sketch container with pixels
-    populateSketchPad();
-}
+    gridParent.style.gridTemplateColumns = `repeat(${currentSize}, 1fr)`;
+    gridParent.style.gridTemplateRows = `repeat(${currentSize}, 1fr)`;
 
-
-function populateSketchPad() {
     for (var i = 0; i < currentSize * currentSize; i++) {
         const newDiv = document.createElement('div');
         newDiv.classList = "template-div";
         // userSelect was a two hour bug...
         newDiv.style.userSelect = "none";
+        newDiv.style.margin = '0';
         newDiv.addEventListener('mouseover', changeColor)
         newDiv.addEventListener('mousedown', changeColor)
-        sketchContainer.appendChild(newDiv);
+        gridParent.appendChild(newDiv);
     }
-    // Sketch container is completed, append it to its parent container
-    gridParent.append(sketchContainer);
 }
 
 function updateDimensions() {
+    gridParent.innerHTML = '';
     // save the new size
     currentSize = rangeSlider.value;
     // display the new dimensions to the user
@@ -114,6 +95,7 @@ function updateCurrentMode(updatedMode) {
 
 
 function reloadGrid() {
+    gridParent.innerHTML = '';
     updateCurrentMode('color');
     createSketchPad();
 }
